@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teemah's Bakery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="Teemah's Bakery Logo" class="logo">
+    <h1>Teemah's Bakery</h1>
+    <p>Fresh • Affordable • Everyday Goodness</p>
+  </header>
+
+  <!-- Menu Section -->
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-items">
+      <div class="item"><h3>Bread</h3><p>₦1500 per loaf</p></div>
+      <div class="item"><h3>Meat Pie</h3><p>₦700 each</p></div>
+      <div class="item"><h3>Doughnut</h3><p>₦500 each</p></div>
+      <div class="item"><h3>Puff-Puff</h3><p>₦1000 per pack</p></div>
+      <div class="item"><h3>Cakes</h3><p>₦20000</p></div>
+      <div class="item"><h3>Chin-Chin</h3><p>₦1000 per pack</p></div>
+      <div class="item"><h3>Cup Cakes</h3><p>₦300 each</p></div>
+      <div class="item"><h3>Zobo</h3><p>₦1000 per bottle</p></div>
+      <div class="item"><h3>Smoothies</h3><p>₦1000 per cup</p></div>
+      <div class="item"><h3>Kunu Aya</h3><p>₦1000 per bottle</p></div>
+      <div class="item"><h3>Soft Drinks</h3><p>₦300/₦500 per bottle</p></div>
+    </div>
+  </section>
+
+  <!-- Order Form -->
+  <section id="order">
+    <h2>Place Your Order</h2>
+    <form onsubmit="sendWhatsApp(); return false;">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="product">Select Product:</label>
+      <select id="product" required>
+        <option value="Bread">Bread</option>
+        <option value="Meat Pie">Meat Pie</option>
+        <option value="Doughnut">Doughnut</option>
+        <option value="Puff-Puff">Puff-Puff</option>
+        <option value="Cakes">Cakes</option>
+        <option value="Chin-Chin">Chin-Chin</option>
+        <option value="Cup Cakes">Cup Cakes</option>
+        <option value="Zobo">Zobo</option>
+        <option value="Smoothies">Smoothies</option>
+        <option value="Kunu Aya">Kunu Aya</option>
+        <option value="Soft Drinks">Soft Drinks</option>
+      </select>
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" min="1" required>
+
+      <label for="custPhone">Customer Phone Number:</label>
+      <input type="tel" id="custPhone" required>
+
+      <button type="submit">Submit Order</button>
+    </form>
+  </section>
+
+  <!-- Confirmation Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <p>✅ Thank you! Chef Teemah will contact you soon to confirm your order.</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Location: Abuja, Nigeria</p>
+    <p>📞 Phone: +234 9115756675</p>
+    <p>📧 Email: chefteemah@bakery.com</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Teemah's Bakery | Designed by Chef Teemah</p>
+  </footer>
+
+  <!-- WhatsApp Script -->
+  <script>
+    function sendWhatsApp() {
+      let name = document.getElementById("name").value;
+      let product = document.getElementById("product").value;
+      let quantity = document.getElementById("quantity").value;
+      let custPhone = document.getElementById("custPhone").value;
+
+      let message = `New Order!\nName: ${name}\nProduct: ${product}\nQuantity: ${quantity}\nCustomer Phone: ${custPhone}`;
+      
+      // Replace with YOUR WhatsApp number (e.g., 2349115756675)
+      let yourNumber = "2349115756675";  
+
+      window.open(`https://wa.me/${yourNumber}?text=${encodeURIComponent(message)}`, "_blank");
+
+      // Show confirmation popup
+      document.getElementById("popup").style.display = "flex";
+
+      // Clear form fields
+      document.getElementById("name").value = "";
+      document.getElementById("product").selectedIndex = 0;
+      document.getElementById("quantity").value = "";
+      document.getElementById("custPhone").value = "";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
